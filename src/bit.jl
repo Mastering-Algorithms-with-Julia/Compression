@@ -1,6 +1,6 @@
 function bitget(bits::Vector{UInt8}, pos::Int)
   mask = 0x80
-  for _ = 1:(pos % 8)
+  for _ = 1 : pos % 8 - 1
     mask = mask >> 1
   end
 
@@ -10,7 +10,7 @@ end
 function bitset!(bits::AbstractArray{UInt8}, pos::Int, state::Int)
   mask = 0x80
 
-  for _ = 1:((pos - 1) % 8)
+  for _ = 1 : pos % 8 - 1
     mask = mask >> 1
   end
 

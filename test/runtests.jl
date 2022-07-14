@@ -10,6 +10,6 @@ using Compression, Test
     bits = Vector{UInt8}("hello world")
     @show bits
     bitrotateleft!(bits, length(bits), 2)
-    @show bits
+    @show map(Int, bits)
   end
 end
