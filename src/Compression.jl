@@ -1,5 +1,7 @@
 module Compression
 
-greet() = print("Hello World!")
+include("bit.jl")
+
+export bitxor, bitrotateleft!
 
 end # module
