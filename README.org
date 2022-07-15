@@ -1,0 +1,26 @@
+* 数据压缩
+** 霍夫曼编码
+这个接口我还不知道怎么搞，如果是
+#+begin_src julia
+  message = "hello world"
+
+  compressed = huffmancompress(message)
+  uncompressed = huffmanuncompress(compressed)
+#+end_src
+这样我不知道怎么解码，所以我采用了这样的接口
+#+begin_src julia
+  huffmancompress(phrase::AbstractString, huffmantree::HuffmanTree)
+  huffmanuncompress(compressed::AbstractString, huffmantree::HuffmanTree)
+#+end_src
+*** Usage
+#+begin_src julia
+  using Compression
+
+  phrase = "hello world"
+  freq = countmap(phrase)
+  huffmantree = buildtree(freq)
+
+  compressed = huffmancompress("hello world", huffmantree)
+  @show compressed
+  @show huffmanuncompress(compressed, huffmantree)
+#+end_src

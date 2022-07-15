@@ -12,4 +12,14 @@ using Compression, Test
     bitrotateleft!(bits, length(bits), 2)
     @show map(Int, bits)
   end
+
+  @testset "test huffman" begin
+    phrase = "hello world"
+    freq = countmap(phrase)
+    huffmantree = buildtree(freq)
+
+    compressed = huffmancompress("hello world", huffmantree)
+    @show compressed
+    @show huffmanuncompress(compressed, huffmantree)
+  end
 end
