@@ -22,4 +22,14 @@ using Compression, Test
     @show compressed
     @show huffmanuncompress(compressed, huffmantree)
   end
+
+  @testset "test lz77" begin
+    compressor = LZ77(6, 4)
+
+    origin = "hello world"
+    pack = lz77compress(compressor, origin)
+    unpack = lz77uncompress(compressor, pack)
+
+    @test unpack == origin
+  end
 end

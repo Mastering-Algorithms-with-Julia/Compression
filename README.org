@@ -24,3 +24,11 @@
   @show compressed
   @show huffmanuncompress(compressed, huffmantree)
 #+end_src
+
+** LZ77 编码
+#+begin_src julia
+  origin = "hello world"
+  pack = lz77compress(compressor, origin)
+  unpack = lz77uncompress(compressor, pack)
+
+#+end_src
